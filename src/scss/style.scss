@@ -1,0 +1,51 @@
+
+@use "_search.scss";
+$font-main: "Asap", sans-serif;
+$font-second: "Josefin Slab", serif;
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 62.5%;
+  color: white;
+  font-family: $font-second;
+  font-weight: 500;
+}
+body {
+  background-color: #111;
+}
+
+.header {
+  font-size: 5.2rem;
+
+  margin: 3rem auto;
+  text-align: center;
+}
+.top-rated {
+  margin: 1rem auto 2rem auto;
+  text-align: center;
+  font-size: 3.8rem;
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90vw;
+  background-color: white;
+  margin: 1rem auto;
+  padding: 3rem auto;
+  align-items: center;
+}
+.search {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+.search:focus {outline: 3px solid #ddd;}
+
+.drop-down {outline: 3px solid #ddd;}
