@@ -1,66 +1,48 @@
 const DOMSelectors = {
   grid: document.querySelector(".comic-grid"),
-  search: document.querySelector(".search"),
-  submit: document.querySelector(".submit"),
-  dropDown: document.querySelector(".drop-down"),
 };
-const key = `bf4202f8db0e27501960cf60881777d4`;
+const publickey = `bf4202f8db0e27501960cf60881777d4`;
+const hash = `59273d4a371e6ef2bd7d6a729260d486`;
+const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&nameStartsWith=sp`;
 
-const dropdown = async function() {
+const defaultPage = async function() {
   try {
-    const character = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchTerm}&apikey=${key}`;
     const response = await fetch(character);
     const data = await response.json();
-
-    data.results.array.forEach((character) => {
-      DOMSelectors.dropDown.insertAdjacentElement(
+    const char = data.data.results;
+    console.log(char);
+    char.forEach((comic) => {
+      DOMSelectors.grid.insertAdjacentHTML(
         "beforeend",
-        `<a href=#${character.name}>${character.name}</a>`
-      )
+        `<div class="movie-card">
+       <div class="comic-front">
+         <img
+           src=""
+           alt=""
+           class="poster"
+         />
+       </div>
+       <div class="comic-back">
+         <h3 class="comic-header">${comic.name}</h3>
+         <div class="pages">
+           <p class="comic-count">Number of Comics:${comic.comics.available}</p>
+         </div>
+
+         <div class="date">
+           <p class="modified">Modified:</p>
+           <p class="modified">${comic.modified}</p>
+         </div>
+
+         <div class="comic-description">
+           <div>${comic.description}</div>
+         </div>
+       </div>
+     </div>`
+      );
     });
   }catch (error) {
     console.log(error);
   }
 };
 
-// const init = async function () {
-//   try {
-//     const character = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchTerm}&apikey=${key}`;
-//     const response = await fetch(character);
-//     const data = await response.json();
-//     const query = `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${searchTerm}&apikey=${key}`;
-//     data.results.forEach((comic) => {
-//       DOMSelectors.grid.insertAdjacentHTML(
-//         "beforeend",
-//         `<div class="movie-card">
-//       <div class="movie-card-front">
-//         <img
-//           src="https://image.tmdb.org/t/p/w300/${comic.character}"
-//           alt=""
-//           class="poster"
-//         />
-//       </div>
-//       <div class="movie-card-back">
-//         <h3 class="movie-card-header">${movie.original_title}</h3>
-//         <div class="score-box">
-//           <p class="user-score">Community Score</p>
-//           <p class="user-score">${movie.vote_average}</p>
-//         </div>
-
-//         <div class="release-box">
-//           <p class="release-date">Released</p>
-//           <p class="release-date">${movie.release_date}</p>
-//         </div>
-
-//         <div class="movie-genres">
-//           <div>${genreArr}</div>
-//         </div>
-//       </div>
-//     </div>`
-//       );
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-dropdown();
+defaultPage();

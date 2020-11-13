@@ -27,7 +27,7 @@ body {
   text-align: center;
   font-size: 3.8rem;
 }
-.card-grid {
+.comic-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -49,3 +49,39 @@ body {
 .search:focus {outline: 3px solid #ddd;}
 
 .drop-down {outline: 3px solid #ddd;}
+
+.comic-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-position: center;
+  z-index: 3;
+  transition: all 0.3s;
+}
+.comic-back {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  background-color: rgba(33, 33, 33, 0.8);
+  width: 100%;
+  height: 20rem;
+}
+
+.comic-header {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  margin: 1rem auto;
+
+  text-align: center;
+  width: 20rem;
+}
+.poster {
+  width: 100%;
+  height: 100%;
+}
+.comic-description {
+  width: 20rem;
+}
