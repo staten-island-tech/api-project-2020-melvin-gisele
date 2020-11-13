@@ -7,7 +7,7 @@ const hash = `59273d4a371e6ef2bd7d6a729260d486`;
 const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&nameStartsWith=a&offset=0`;
 
 
-const nextButton
+//const nextButton
 
 const defaultPage = async function() {
   try {
