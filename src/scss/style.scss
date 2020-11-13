@@ -33,7 +33,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 90vw;
-  background-color: white;
+  background-color: black;
   margin: 1rem auto;
   padding: 3rem auto;
   align-items: center;
@@ -67,9 +67,10 @@ body {
   justify-content: space-evenly;
   align-items: center;
   color: white;
-  background-color: rgba(33, 33, 33, 0.8);
+  background-color: red;
   width: 100%;
   height: 40rem;
+  border-radius: 2rem;
 }
 
 .comic-header {
