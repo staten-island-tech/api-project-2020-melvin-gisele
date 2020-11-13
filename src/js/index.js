@@ -1,16 +1,48 @@
 const DOMSelectors = {
   grid: document.querySelector(".comic-grid"),
   nextButton: document.querySelector(".next"),
+  previousButton: document.querySelector(".previous"),
+  nextButtonB: document.querySelector(".next-bottom"),
+  previousButtonB: document.querySelector(".previous-bottom"),
 }
 const publickey = `bf4202f8db0e27501960cf60881777d4`;
 const hash = `59273d4a371e6ef2bd7d6a729260d486`;
-const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&offset=0`;
+let offset = 0;
 
-
-//const nextButton
+const NextPage = async function() {
+  DOMSelectors.nextButton.addEventListener("click", function (e) {
+    DOMSelectors.grid.innerHTML = "";
+    offset += 30;
+    defaultPage();
+  });
+  DOMSelectors.previousButton.addEventListener("click", function (e) {
+    if (offset == 0) {
+      offset = 0;
+    } else {
+      DOMSelectors.grid.innerHTML = "";
+      offset -= 30;
+      defaultPage();
+    }
+  });
+  DOMSelectors.nextButtonB.addEventListener("click", function (e) {
+    DOMSelectors.grid.innerHTML = "";
+    offset += 30;
+    defaultPage();
+  });
+  DOMSelectors.previousButtonB.addEventListener("click", function (e) {
+    if (offset == 0) {
+      offset = 0;
+    } else {
+      DOMSelectors.grid.innerHTML = "";
+      offset -= 30;
+      defaultPage();
+    }
+  });
+}
 
 const defaultPage = async function() {
   try {
+    const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&offset=${offset}`;
     const response = await fetch(character);
     const data = await response.json();
     const char = data.data.results;
@@ -49,3 +81,4 @@ const defaultPage = async function() {
 };
 
 defaultPage();
+NextPage();
