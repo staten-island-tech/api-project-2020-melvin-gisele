@@ -1,7 +1,7 @@
 
 @use "_search.scss";
-$font-main: "Asap", sans-serif;
-$font-second: "Josefin Slab", serif;
+$font-main: 'Bebas Neue', sans-serif;
+$font-second: 'Bebas Neue', sans-serif;
 html,
 body {
   box-sizing: border-box;
@@ -18,9 +18,10 @@ body {
 
 .header {
   font-size: 5.2rem;
-
   margin: 3rem auto;
   text-align: center;
+  width: 50%;
+  background-color: red;
 }
 .top-rated {
   margin: 1rem auto 2rem auto;
@@ -55,7 +56,6 @@ body {
   justify-content: space-around;
   align-items: center;
   width: 20rem;
-  height: 20rem;
   top: 0;
   left: 0;
   background-position: center;

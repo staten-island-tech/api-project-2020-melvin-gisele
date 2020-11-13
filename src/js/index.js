@@ -4,7 +4,7 @@ const DOMSelectors = {
 }
 const publickey = `bf4202f8db0e27501960cf60881777d4`;
 const hash = `59273d4a371e6ef2bd7d6a729260d486`;
-const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&nameStartsWith=a&offset=0`;
+const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&offset=0`;
 
 
 //const nextButton
