@@ -3,7 +3,7 @@ const DOMSelectors = {
 };
 const publickey = `bf4202f8db0e27501960cf60881777d4`;
 const hash = `59273d4a371e6ef2bd7d6a729260d486`;
-const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&nameStartsWith=sp`;
+const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&nameStartsWith=a`;
 
 const defaultPage = async function() {
   try {
@@ -17,7 +17,7 @@ const defaultPage = async function() {
         `<div class="movie-card">
        <div class="comic-front">
          <img
-           src=""
+           src="${comic.thumbnail.path}/portrait_medium.${comic.thumbnail.extension}"
            alt=""
            class="poster"
          />
