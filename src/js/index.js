@@ -56,7 +56,7 @@ const defaultPage = async function() {
        <div class="comic">
          <h3 class="comic-header">${comic.name}</h3>
          <img
-         src="${comic.thumbnail.path}/portrait_medium.${comic.thumbnail.extension}"
+         src="${comic.thumbnail.path}/portrait_large.${comic.thumbnail.extension}"
          alt=""
          class="poster"
           />
