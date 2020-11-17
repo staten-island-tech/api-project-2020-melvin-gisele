@@ -1,3 +1,4 @@
+import { listen } from "./search"
 const DOMSelectors = {
   grid: document.querySelector(".comic-grid"),
   nextButton: document.querySelector(".next"),
@@ -82,3 +83,4 @@ const defaultPage = async function() {
 
 defaultPage();
 NextPage();
+listen();

@@ -1,93 +1,32 @@
-const genres = [
-  {
-    id: 28,
-    name: "Action",
-  },
-  {
-    id: 12,
-    name: "Adventure",
-  },
-  {
-    id: 16,
-    name: "Animation",
-  },
-  {
-    id: 35,
-    name: "Comedy",
-  },
-  {
-    id: 80,
-    name: "Crime",
-  },
-  {
-    id: 99,
-    name: "Documentary",
-  },
-  {
-    id: 18,
-    name: "Drama",
-  },
-  {
-    id: 10751,
-    name: "Family",
-  },
-  {
-    id: 14,
-    name: "Fantasy",
-  },
-  {
-    id: 36,
-    name: "History",
-  },
-  {
-    id: 27,
-    name: "Horror",
-  },
-  {
-    id: 10402,
-    name: "Music",
-  },
-  {
-    id: 9648,
-    name: "Mystery",
-  },
-  {
-    id: 10749,
-    name: "Romance",
-  },
-  {
-    id: 878,
-    name: "Science Fiction",
-  },
-  {
-    id: 10770,
-    name: "TV Movie",
-  },
-  {
-    id: 53,
-    name: "Thriller",
-  },
-  {
-    id: 10752,
-    name: "War",
-  },
-  {
-    id: 37,
-    name: "Western",
-  },
-];
 
 const DOMSelectors = {
-  grid: document.querySelector(".movie-grid"),
+  grid: document.querySelector(".comic-grid"),
   searchForm: document.getElementById("search-form"),
   searchArea: document.getElementById("search-area"),
 };
 
 const listen = function () {
-  DOMSelectors.searchForm.addEventListener("submit", function (e) {
+  DOMSelectors.searchForm.addEventListener("keydown", function (e) {
     e.preventDefault();
+    DOMSelectors.grid.innerHTML = "";
+    const searchParams = DOMSelectors.searchArea.value;
+    const searchQuery = async function () {
+      const publickey = `bf4202f8db0e27501960cf60881777d4`;
+      const hash = `59273d4a371e6ef2bd7d6a729260d486`;
+      const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&nameStartsWith=${searchParams};`
+      try{
+        const response = await fetch(character);
+        const data = await response.json();
+        const char = data.data.results;
+        console.log(char);
+      } catch (error) {
+        console.log(err)
+      }
+    }
     //search values
     //async function
   });
 };
 listen();
+
+export { listen };
