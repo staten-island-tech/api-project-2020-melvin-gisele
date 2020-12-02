@@ -3,7 +3,6 @@ const listen = function () {
     e.preventDefault();
     DOMSelectors.grid.innerHTML = "";
     const searchParams = DOMSelectors.searchArea.value;
-    console.log(searchParams)
     const searchQuery = async function () {  
         const publickey = `bf4202f8db0e27501960cf60881777d4`;
         const hash = `59273d4a371e6ef2bd7d6a729260d486`;
@@ -43,12 +42,15 @@ const listen = function () {
           );
         });
       } catch (error) {
-        console.log(err)
+        defaultPage();
       }
     }
+    if (searchParams == "") {
+      defaultPage();
+    } else {
     searchQuery();
+    }
   });
-  
 };
 const DOMSelectors = {
   grid: document.querySelector(".comic-grid"),
@@ -135,5 +137,6 @@ const defaultPage = async function() {
 };
 
 defaultPage();
-NextPage();
 listen();
+NextPage();
+
