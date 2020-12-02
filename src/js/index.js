@@ -23,7 +23,6 @@ const listen = function () {
         const hash = `59273d4a371e6ef2bd7d6a729260d486`;
         const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&nameStartsWith=${searchParams}&offset=${offset}`
         console.log(character)
-        offset = 0;
       try{
         const response = await fetch(character);
         const data = await response.json();
@@ -78,7 +77,7 @@ const listen = function () {
     searchQuery();
     DOMSelectors.nextButton.addEventListener("click", function (e) {
       if(offset+30 > total) {
-
+        searchQuery();
       } else {
       DOMSelectors.grid.innerHTML = "";
       offset += 30;
@@ -86,7 +85,7 @@ const listen = function () {
       }
     });
     DOMSelectors.previousButton.addEventListener("click", function (e) {
-      if (offset == 0) {
+      if (offset < 30) {
         offset = 0;
       } else {
         DOMSelectors.grid.innerHTML = "";
@@ -96,7 +95,7 @@ const listen = function () {
     });
     DOMSelectors.nextButtonB.addEventListener("click", function (e) {
       if(offset+30 > total) {
-
+        searchQuery();
       } else {
       DOMSelectors.grid.innerHTML = "";
       offset += 30;
@@ -104,7 +103,7 @@ const listen = function () {
       }
     });
     DOMSelectors.previousButtonB.addEventListener("click", function (e) {
-      if (offset == 0) {
+      if (offset < 0) {
         offset = 0;
       } else {
         DOMSelectors.grid.innerHTML = "";
