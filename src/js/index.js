@@ -30,34 +30,7 @@ const listen = function () {
         total = data.data.total;
         console.log(char);
         if (total > 0) {
-        char.forEach((comic) => {
-          DOMSelectors.grid.insertAdjacentHTML(
-            "beforeend",
-            `<div class="movie-card">
-           <div class="comic-front">
-           </div>
-           <div class="comic">
-             <h3 class="comic-header">${comic.name}</h3>
-             <img
-             src="${comic.thumbnail.path}/portrait_large.${comic.thumbnail.extension}"
-             alt=""
-             class="poster"
-              />
-             <div class="pages">
-               <p class="comic-count">Number of Comics:${comic.comics.available}</p>
-             </div>
-    
-             <div class="date">
-               <p class="modified">Modified:${comic.modified}</p>
-             </div>
-    
-             <div class="comic-description">
-               <div>${comic.description}</div>
-             </div>
-           </div>
-         </div>`
-          );
-        });
+          writeCharacter(char);
       } else {
         DOMSelectors.grid.insertAdjacentHTML(
           "beforeend",
@@ -116,47 +89,48 @@ const listen = function () {
 };
 
 const defaultPage = async function() {
-  //NextPage();
   try {
     const character = `https://gateway.marvel.com:443/v1/public/characters?&ts=1&apikey=${publickey}&hash=${hash}&limit=30&offset=${offset}`;
     const response = await fetch(character);
     const data = await response.json();
     const char = data.data.results;
-    console.log(char);
-    char.forEach((comic) => {
-      DOMSelectors.grid.insertAdjacentHTML(
-        "beforeend",
-        `<div class="movie-card">
-       <div class="comic-front">
-       </div>
-       <div class="comic">
-         <h3 class="comic-header">${comic.name}</h3>
-         <img
-         src="${comic.thumbnail.path}/portrait_large.${comic.thumbnail.extension}"
-         alt=""
-         class="poster"
-          />
-         <div class="pages">
-           <p class="comic-count">Number of Comics:${comic.comics.available}</p>
-         </div>
-
-         <div class="date">
-           <p class="modified">Modified:${comic.modified}</p>
-         </div>
-
-         <div class="comic-description">
-           <div>${comic.description}</div>
-         </div>
-       </div>
-     </div>`
-      );
-    });
+    writeCharacter(char);
   }catch (error) {
     console.log(error);
   }
 };
 
+const writeCharacter = function (char) {
+  char.forEach((comic) => {
+    DOMSelectors.grid.insertAdjacentHTML(
+      "beforeend",
+      `<div class="movie-card">
+     <div class="comic-front">
+     </div>
+     <div class="comic">
+       <h3 class="comic-header">${comic.name}</h3>
+       <img
+       src="${comic.thumbnail.path}/portrait_large.${comic.thumbnail.extension}"
+       alt=""
+       class="poster"
+        />
+       <div class="pages">
+         <p class="comic-count">Number of Comics:${comic.comics.available}</p>
+       </div>
+
+       <div class="date">
+         <p class="modified">Modified:${comic.modified}</p>
+       </div>
+
+       <div class="comic-description">
+         <div>${comic.description}</div>
+       </div>
+     </div>
+   </div>`
+    );
+  });
+}
+
 defaultPage();
 listen();
-//NextPage();
 
